@@ -12,3 +12,7 @@ By default, the calculator will change the last edited value (so if you edit A, 
 <a href="https://xyz.nathanhleung.com/pythag-live/">
   <img src="https://i.gyazo.com/dcee8ee5ffc8924d9949c20f9e8dd395.gif">
 </a>
+
+## Todo
+* Triangle visualization
+* Calculate inverse tangents to get angles
