@@ -58,9 +58,12 @@ a:hover {
   color: #111;
 }
 
+#info {
+  padding: 30px;
+}
+
 #canvas {
   background: #f8f8f8;
   margin-top: 10px;
   margin-bottom: 10px;
-  width: 100%;
 }

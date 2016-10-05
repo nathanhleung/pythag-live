@@ -5,6 +5,6 @@ Use this handy calculator to calculate the lengths of hypotenuses and legs of ri
 Built with <a href="http://vanilla-js.com/">vanilla.js</a>!
 
 ## Demo
-By default, the calculator will change the last edited value (so if you edit A, then C, then A again, the calculator will find B for you). A toggle to customize this behavior will come in a future release.
+Edit either A, B, or C - the calculator will always keep A constant and edit B and C depending on which one you're changing
 
-<img src="https://gyazo.com/dcee8ee5ffc8924d9949c20f9e8dd395">
+<img src="https://i.gyazo.com/60c7650025693856bbdc45304adceaf5.gif">
