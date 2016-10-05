@@ -8,7 +8,7 @@
 }
 
 #app {
-  font-family: Raleway, sans-serif;
+  font-family: Open Sans, sans-serif;
   text-align: center;
   color: #111;
   padding: 30px;
@@ -17,6 +17,7 @@
 h1 {
   font-weight: 300;
   text-transform: uppercase;
+  letter-spacing: 0.1rem;
 }
 
 .form-group {
