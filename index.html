@@ -16,24 +16,48 @@
         <br />
         <div id='form'>
           <div class='form-group'>
-            <input type='text' id='a' placeholder='3' onkeyup='calculate(event)'><sup>2</sup>
+            <input type='text' id='a' placeholder='3' onkeyup='update(event)'><sup>2</sup>
             <span class='operator'>+</span>
           </div>
           <div class='form-group'>
-            <input type='text' id='b' placeholder='4' onkeyup='calculate(event)'><sup>2</sup>
+            <input type='text' id='b' placeholder='4' onkeyup='update(event)'><sup>2</sup>
             <span class='operator'>=</span>
           </div>
           <div class='form-group'>
-            <input type='text' id='c' placeholder='5' onkeyup='calculate(event)'><sup>2</sup>
+            <input type='text' id='c' placeholder='5' onkeyup='update(event)'><sup>2</sup>
           </div>
+        </div>
+        <div id="info">
+          <p>$a = tan^{-1}(\frac{A}{B}) = $ <span id='angle-a'>$0^{\circ}$</span></p>
+          <p>$b = tan^{-1}(\frac{B}{A}) = $ <span id='angle-b'>$0^{\circ}$</span></p>
+          <p>$c = 90^{\circ}$</p>
+        </div>
+        <div id='canvas-container'>
+          <canvas id='canvas' width='500' height='500'></canvas>
         </div>
         <br />
         <p>
-          built with <a href="http://vanilla-js.com/">vanilla.js</a> by <a href="https://github.com/nathanhleung">@nathanhleung</a>
+          built with <a href="http://vanilla-js.com/" tabindex="-1">vanilla.js</a> by <a href="https://github.com/nathanhleung" tabindex="-1">@nathanhleung</a>
         </p>
         <br />
       </div>
     </div>
-    <script src="scripts.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        messageStyle:'none',
+        tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']]
+        },
+      });
+    </script>
+    <script src="calculator.js"></script>
+    <script src="canvas.js"></script>
+    <script>
+      function update(e) {
+        calculate(e);
+        updateCanvas();
+      }
+    </script>
   </body>
 </html>

@@ -1,6 +1,12 @@
 function round(num, places) {
 	const factor = Math.pow(10, places);
-	return (Math.round(num * factor) / factor);
+	const result = (Math.round(num * factor) / factor);
+	return result;
+}
+
+function atanDeg(num) {
+  const angle = Math.atan(num) * 180 / Math.PI;
+  return round(angle, 3);
 }
 
 function getVals() {
@@ -25,25 +31,13 @@ function setWidth(vals) {
   }
 }
 
-let editOrder = [];
+let inactive = 'c';
 function calculate(e) {
   const target = e.target.id;
-  editOrder = editOrder.filter((el) => {
-  	if (el === target) {
-    	return false;
-    }
-    return true;
-  });
-  editOrder.push(target);
-  if (editOrder.length === 2) {
-  	const unedited = ['a','b','c'].filter((el) => {
-    	if (editOrder.indexOf(el) > -1) {
-      	return false;
-      }
-      return true;
-    });
-    console.log(editOrder, unedited);
-  	editOrder.unshift(unedited[0]);
+  if (target === 'c') {
+    inactive = 'b';
+  } else {
+    inactive = 'c';
   }
   
   let vals = getVals();
@@ -52,19 +46,19 @@ function calculate(e) {
   	(vals.a !== '' && vals.b !== '') ||
     (vals.a !== '' && vals.c !== '') ||
     (vals.b !== '' && vals.c !== '');
-  
+    
   if (condition) {
   	const nums = {
     	a: Number(vals.a),
       b: Number(vals.b),
       c: Number(vals.c),
     };
-  	switch (editOrder[0]) {
-    	case 'a': {
-      	const result = Math.sqrt(Math.pow(nums.c, 2) - Math.pow(nums.b, 2));
-      	document.getElementById('a').value = round(result.toString(), 4);
-        break;
-      }
+    // update angles in infobox
+    const angleA = MathJax.Hub.getAllJax("angle-a")[0];
+    MathJax.Hub.Queue(["Text",angleA,atanDeg(nums.a / nums.b) + '^{\\circ}']);
+    const angleB = MathJax.Hub.getAllJax("angle-b")[0];
+    MathJax.Hub.Queue(["Text",angleB,atanDeg(nums.b / nums.a) + '^{\\circ}']);
+  	switch (inactive) {
       case 'b': {
       	const result = Math.sqrt(Math.pow(nums.c, 2) - Math.pow(nums.a, 2));
       	document.getElementById('b').value = round(result.toString(), 4);
@@ -76,6 +70,11 @@ function calculate(e) {
         break;
       }
     }
+  } else {
+    const angleA = MathJax.Hub.getAllJax("angle-a")[0];
+    MathJax.Hub.Queue(["Text",angleA,'0^{\\circ}']);
+    const angleB = MathJax.Hub.getAllJax("angle-b")[0];
+    MathJax.Hub.Queue(["Text",angleB,'0^{\\circ}']);
   }
   
   // get updated vals and fix widths
