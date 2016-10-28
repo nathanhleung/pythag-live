@@ -18,7 +18,7 @@ const PYTHAG_CANVAS = (() => {
     
     if (condition) {
       // so scaled hypotenuse = width of canvas minus some padding
-      const padding = 50;
+      const padding = 70;
       const scale = (width - padding) / vals.c;
       const sideLengths = valsArr.map((el) => {
         return el * scale;
@@ -44,13 +44,13 @@ const PYTHAG_CANVAS = (() => {
       const lineHeight = width / 25;
       ctx.font = `${lineHeight * 0.8}px Open Sans`;
       // Angles
-      ctx.fillText('a', offsetLeft - fontOffset, width - sideLengths[0] - offsetBottom);
-      ctx.fillText('b', sideLengths[1] + offsetLeft, width - offsetBottom + fontOffset);
+      ctx.fillText('b', offsetLeft - fontOffset, width - sideLengths[0] - offsetBottom);
+      ctx.fillText('a', sideLengths[1] + offsetLeft, width - offsetBottom + fontOffset);
       ctx.fillText('c', offsetLeft - fontOffset, width - offsetBottom + fontOffset);
       // Sides
       fontOffset = width / 16; // a little bigger offset for the angles
-      ctx.fillText('A', (sideLengths[1]) / 2 + offsetLeft, width - offsetBottom + fontOffset);
-      ctx.fillText('B', offsetLeft - fontOffset, width - (sideLengths[0] / 2) - offsetBottom);
+      ctx.fillText('B', (sideLengths[1]) / 2 + offsetLeft, width - offsetBottom + fontOffset);
+      ctx.fillText('A', offsetLeft - fontOffset, width - (sideLengths[0] / 2) - offsetBottom);
       ctx.fillText('C', (sideLengths[1]) / 2 + offsetLeft + fontOffset, width - (sideLengths[0] / 2) - offsetBottom);
       // Information
       const textBoxSize = width / 3;
